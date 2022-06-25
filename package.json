@@ -1,0 +1,22 @@
+{
+  "name": "lesson5-etherjs",
+  "version": "1.0.0",
+  "description": "lesson 5 of Learn Blockchain, Solidity, and Full Stack Web3 Development with JavaScript – 32-Hour Course",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_OPTIONS='--trace-deprecation --abort-on-uncaught-exception' ts-node ./index.ts",
+    "build":"solcjs --bin --include-path node_modules/ --base-path . SimpleStorage.sol"
+  },
+  "author": "cfmusumeci",
+  "license": "Unlicense",
+  "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^8.13.1",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "solc": "^0.8.15"
+  }
+}
