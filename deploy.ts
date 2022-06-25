@@ -12,7 +12,6 @@ async function deploy() {
     "078f073263088decf6b01cab71faabe8436ae4f61b42379359d992809994ba52", // PRIVATE KEY
     provider
   );
-  console.log(ABI_FILE);
   try {
     const abi = await readFile(ABI_FILE, {
       encoding: "utf-8",
