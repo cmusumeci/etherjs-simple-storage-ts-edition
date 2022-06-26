@@ -1,4 +1,4 @@
-import deploy from "./deploy";
+import deploy from "./src/deploy";
 
 async function main() {
   try {

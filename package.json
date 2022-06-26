@@ -5,8 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_OPTIONS='--trace-deprecation --abort-on-uncaught-exception' ts-node ./index.ts",
-    "compile": "solcjs --bin --abi --include-path node_modules/ --base-path . SimpleStorage.sol"
+    "start": "NODE_OPTIONS='--trace-deprecation --abort-on-uncaught-exception' ts-node src/index.ts",
+    "compile": "solcjs --bin --abi --include-path node_modules/ --base-path .  SimpleStorage.sol"
   },
   "author": "cfmusumeci",
   "license": "Unlicense",
