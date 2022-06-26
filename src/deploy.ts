@@ -1,32 +1,39 @@
-import { ethers } from "ethers";
-import { readFile } from "fs/promises";
-import { ABI_FILE, BINARY_FILE, PRIVATE_KEY, RCP_PROVIDER } from "./constants";
+import { getContractFactory } from "./fn";
 
+/**
+ * Deploy smart contract & use its function
+*/
 async function deploy() {
-  const provider = new ethers.providers.JsonRpcProvider(RCP_PROVIDER);
-  const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
   try {
-    const abi = await readFile(ABI_FILE, {
-      encoding: "utf-8",
-    });
-
-    const binary = await readFile(BINARY_FILE, {
-      encoding: "utf-8",
-    });
-
-    const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
+    const contractFactory = await getContractFactory();
     console.log("Deploying, wait....");
     const contract = await contractFactory.deploy();
+    await contract.deployTransaction.wait(1);
 
     /**
-     * Transaction deployment state
+     * TRANSACTION & DEPLOYMENT STATE
+     *
+     * console.log("Here is the deployment transaction (transaction response):");
+     * console.log(contract.deployTransaction);
+     * const transactionReceipt = contract.deployTransaction.wait(1); // "1" is num of block to waiting for know if transaction is receipt
+     * console.log("here is the transaction receipt: ");
+     * console.log(transactionReceipt);
      */
-    console.log("Here is the deployment transaction (transaction response):");
-    console.log(contract.deployTransaction);
 
-    const transactionReceipt = contract.deployTransaction.wait(1); // "1" is num of block to waiting for know if transaction is receipt
-    console.log("here is the transaction receipt: ");
-    console.log(transactionReceipt);
+    /**
+     *
+     * retrieveAndStoreNumber - Get & Store Number (SIMPLE_STORAGE.SOL)
+     * @params num:string - (NB: OK string instead of number - number can be very big in sol)
+     */
+    async function retrieveAndStoreNumber(num: string) {
+      let number = await contract.retrieve();
+      console.log(`Current number is: ${number.toString()}`);
+      await contract.store(num);
+      number = await contract.retrieve();
+      console.log(`After store number is: ${number.toString()}`);
+    }
+
+    await retrieveAndStoreNumber("10");
   } catch (error) {
     throw error;
   }

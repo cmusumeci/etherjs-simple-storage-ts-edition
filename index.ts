@@ -1,4 +1,5 @@
 import deploy from "./src/deploy";
+import "dotenv/config";
 
 async function main() {
   try {
