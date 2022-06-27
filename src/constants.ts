@@ -1,11 +1,11 @@
 import { join, resolve } from "path";
 import { TypeKey } from "./types";
-export const rootPath = resolve();
+export const contractRootPath = resolve(__dirname, "contract");
 
 // Simple Storage
 const SimpleStorageFileName = "SimpleStorage_sol_SimpleStorage";
-export const ABI_FILE = join(rootPath, `${SimpleStorageFileName}.abi`);
-export const BINARY_FILE = join(rootPath, `${SimpleStorageFileName}.bin`);
+export const ABI_FILE = join(contractRootPath, `${SimpleStorageFileName}.abi`);
+export const BINARY_FILE = join(contractRootPath, `${SimpleStorageFileName}.bin`);
 export const SOURCES: { key: TypeKey; file: string }[] = [
   { file: ABI_FILE, key: "abi" },
   { file: BINARY_FILE, key: "binary" },

@@ -1,7 +1,7 @@
 import { TransactionRequest } from "@ethersproject/abstract-provider";
 
 import { Deferrable } from "ethers/lib/utils";
-import { SIMPLE_STORAGE_BINARY } from "./constants";
+import { SIMPLE_STORAGE_BINARY } from "../constants";
 import { getNonce, getProviderAndWallet } from "./fn";
 
 /**

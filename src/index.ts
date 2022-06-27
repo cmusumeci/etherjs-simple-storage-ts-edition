@@ -1,5 +1,5 @@
-import deploy from "./src/deploy";
 import "dotenv/config";
+import deploy from "./deploy/deploy";
 
 async function main() {
   try {

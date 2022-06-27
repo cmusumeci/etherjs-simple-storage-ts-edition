@@ -1,7 +1,7 @@
 import { ethers, Wallet } from "ethers";
 import { readFile } from "fs/promises";
-import { SOURCES } from "./constants";
-import { AbiAndBinaryType, TypeKey } from "./types";
+import { SOURCES } from "../constants";
+import { AbiAndBinaryType, TypeKey } from "../types";
 /**
  * Get ABI & Binary
  * @return { abi:ethers.ContractFactory.ABI,binary:ethers.ContractFactory.binary }
